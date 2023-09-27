@@ -5,7 +5,7 @@ from airflow.operators.bash import BashOperator
 
 # We're hardcoding the project directory value here for the purpose of the demo, but in a production
 # environment this would probably come from a config file and/or environment variables!
-DBT_PROJECT_DIR = "jaffle_shop\dbt"
+DBT_PROJECT_DIR = "jaffle_shop/dbt"
 
 with DAG(
     "dbt-core-fabrics",
@@ -27,6 +27,11 @@ with DAG(
     dbt_version = BashOperator(
         task_id="dbt_version",
         bash_command="dbt --version",
+    )
+
+    dbt_pwd = BashOperator(
+        task_id="dbt_pwd",
+        bash_command="pwd",
     )
     
     dbt_run = BashOperator(
