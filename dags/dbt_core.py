@@ -1,20 +1,29 @@
 from datetime import timedelta
 from pendulum import datetime
-
-from airflow.decorators import dag
+from airflow import DAG
 from airflow.operators.bash import BashOperator
 
 # We're hardcoding the project directory value here for the purpose of the demo, but in a production
 # environment this would probably come from a config file and/or environment variables!
 DBT_PROJECT_DIR = "dbt"
 
-@dag(
-    start_date=datetime(2022, 3, 14),
-    schedule_interval=None,
+with DAG(
+    "dbt-fabrics",
+    default_args={
+        "depends_on_past": False,
+        "email": ["airflow@example.com"],
+        "email_on_failure": False,
+        "email_on_retry": False,
+        "retries": 1,
+        "retry_delay": timedelta(minutes=5),
+    },
+    description="A simple tutorial DAG",
+    schedule_interval=timedelta(days=1),
+    start_date=datetime(2021, 1, 1),
     catchup=False,
-    doc_md=__doc__,
-)
-def dbt_run_from_failure():
+    tags=["dbt", "Fabrics"],
+) as dag:
+
     dbt_run = BashOperator(
         task_id="dbt_run",
         bash_command=f"dbt run --profiles-dir {DBT_PROJECT_DIR} --project-dir {DBT_PROJECT_DIR}",
