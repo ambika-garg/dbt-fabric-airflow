@@ -30,13 +30,13 @@ with DAG(
     )
 
     dbt_pwd = BashOperator(
-        task_id="dbt_pwd",
-        bash_command="pwd",
+        task_id="dbt_debug",
+        bash_command="dbt debug",
     )
     
     dbt_run = BashOperator(
         task_id="dbt_run",
-        bash_command=f"dbt --log-format run --profiles-dir {DBT_PROJECT_DIR} --project-dir {DBT_PROJECT_DIR}" ,
+        bash_command=f"dbt run --profiles-dir {DBT_PROJECT_DIR} --project-dir {DBT_PROJECT_DIR}" ,
     )
 
     dbt_version >> dbt_run
