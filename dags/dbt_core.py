@@ -8,7 +8,7 @@ from airflow.operators.bash import BashOperator
 DBT_PROJECT_DIR = "dbt"
 
 with DAG(
-    "dbt-fabrics",
+    "dbt-core-fabrics",
     default_args={
         "depends_on_past": False,
         "email": ["airflow@example.com"],
@@ -26,7 +26,7 @@ with DAG(
 
     dbt_run = BashOperator(
         task_id="dbt_run",
-        bash_command=f"dbt run --profiles-dir {DBT_PROJECT_DIR} --project-dir {DBT_PROJECT_DIR}",
+        bash_command=f"dbt run",
     )
 
     dbt_run
