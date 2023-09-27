@@ -24,9 +24,14 @@ with DAG(
     tags=["dbt", "Fabrics"],
 ) as dag:
 
+    dbt_version = BashOperator(
+        task_id="dbt_version",
+        bash_command="dbt --version",
+    )
+    
     dbt_run = BashOperator(
         task_id="dbt_run",
-        bash_command=f"dbt run",
+        bash_command="dbt run",
     )
 
-    dbt_run
+    dbt_version >> dbt_run
