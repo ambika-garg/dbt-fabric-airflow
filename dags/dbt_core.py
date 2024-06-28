@@ -14,14 +14,13 @@ with DAG(
         "email": ["airflow@example.com"],
         "email_on_failure": False,
         "email_on_retry": False,
-        "retries": 1,
         "retry_delay": timedelta(minutes=5),
     },
     description="A simple tutorial DAG",
     schedule_interval=timedelta(days=1),
     start_date=datetime(2021, 1, 1),
     catchup=False,
-    tags=["dbt", "Fabrics"],
+    tags=["dbt", "Fabric"],
 ) as dag:
 
     dbt_version = BashOperator(

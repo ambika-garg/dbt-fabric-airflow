@@ -7,7 +7,8 @@ jaffle_shop:
       authentication: CLI
       database: dbt-warehouse-new
       driver: ODBC Driver 18 for SQL Server
-      host: x6eps4xrq2xudenlfv6naeo3i4-nkbn5kalhahujjtdo4w6y2qbeu.msit-datawarehouse.pbidedicated.windows.net
+      host: x6eps4xrq2xudenlfv6naeo3i4-nkbn5kalhahujjtdo4w6y2qbeu.msit-datawarehouse.fabric.microsoft.com
       schema: dbo
       threads: 4
       type: fabric
+# x6eps4xrq2xudenlfv6naeo3i4-nkbn5kalhahujjtdo4w6y2qbeu.msit-datawarehouse.pbidedicated.windows.net
