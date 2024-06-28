@@ -7,6 +7,9 @@ from airflow.operators.bash import BashOperator
 # environment this would probably come from a config file and/or environment variables!
 DBT_PROJECT_DIR = "/opt/airflow/git/dbt-fabric-airflow.git/dbt"
 
+import sys
+sys.path.append("/opt/airflow/git/dbt-fabric-airflow.git")
+
 with DAG(
     "dbt-core-fabrics",
     default_args={
