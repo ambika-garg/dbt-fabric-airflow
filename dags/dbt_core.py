@@ -33,7 +33,7 @@ with DAG(
 
     dbt_pwd = BashOperator(
         task_id="dbt_debug",
-        bash_command= f"cd {DBT_PROJECT_DIR} && ls -la && pwd",
+        bash_command= f"cd {DBT_PROJECT_DIR} && ls -la && pwd && dbt debug",
     )
     
     dbt_run = BashOperator(
