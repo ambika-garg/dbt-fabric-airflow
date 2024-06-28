@@ -38,7 +38,7 @@ with DAG(
     
     dbt_run = BashOperator(
         task_id="dbt_run",
-        bash_command=f"cd dbt && dbt run --profiles-dir {DBT_PROJECT_DIR} --project-dir {DBT_PROJECT_DIR}" ,
+        bash_command=f"cd {DBT_PROJECT_DIR} && dbt run --profiles-dir {DBT_PROJECT_DIR} --project-dir {DBT_PROJECT_DIR}" ,
     )
 
     dbt_version >> dbt_run
