@@ -46,4 +46,4 @@ with DAG(
         bash_command=f"cd {DBT_PROJECT_DIR} && dbt run --profiles-dir {DBT_PROJECT_DIR} --project-dir {DBT_PROJECT_DIR}" ,
     )
 
-    dbt_version >> dbt_pwd >> dbt_debug >> dbt_run
+    dbt_version >> dbt_debug >> dbt_pwd >> dbt_run

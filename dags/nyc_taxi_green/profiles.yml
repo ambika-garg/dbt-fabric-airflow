@@ -6,9 +6,9 @@ nyc_taxi_green:
     fabric-dev:
       type: fabric
       driver: "ODBC Driver 18 for SQL Server"
-      server: x6eps4xrq2xudenlfv6naeo3i4-zoi3phe3mzye3boqle73jov654.dxt-datawarehouse.fabric.microsoft.com
+      server: x6eps4xrq2xudenlfv6naeo3i4-gh6evkuht23ulnfo6mkcbq3cci.dxt-datawarehouse.fabric.microsoft.com
       port: 1433
-      database: "contoso-data-warehouse"
+      database: "contoso-wh"
       schema: dbo
       threads: 4
       authentication: ServicePrincipal
