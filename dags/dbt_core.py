@@ -32,8 +32,13 @@ with DAG(
     )
 
     dbt_pwd = BashOperator(
-        task_id="dbt_debug",
+        task_id="dbt_dir",
         bash_command= f"cd {DBT_PROJECT_DIR} && ls -la && pwd && dbt debug",
+    )
+    
+    dbt_debug = BashOperator(
+        task_id="dbt_debug",
+        bash_command= "dbt debug",
     )
     
     dbt_run = BashOperator(
@@ -41,4 +46,4 @@ with DAG(
         bash_command=f"cd {DBT_PROJECT_DIR} && dbt run --profiles-dir {DBT_PROJECT_DIR} --project-dir {DBT_PROJECT_DIR}" ,
     )
 
-    dbt_version >> dbt_run
+    dbt_version >> dbt_pwd >> dbt_debug >> dbt_run
