@@ -1,0 +1,872 @@
+[0m18:33:22.402616 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10901fd90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1090745d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109074cd0>]}
+
+
+============================== 18:33:22.428483 | 0488de73-b817-4ec6-95ad-ead6938fd634 ==============================
+[0m18:33:22.428483 [info ] [MainThread]: Running with dbt=1.7.3
+[0m18:33:22.428978 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/Users/ambikagarg/dbt-fabric-airflow/dbt', 'version_check': 'True', 'fail_fast': 'False', 'log_path': '/Users/ambikagarg/dbt-fabric-airflow/dbt/logs', 'warn_error': 'None', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'log_format': 'default', 'introspect': 'True', 'invocation_command': 'dbt debug', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m18:33:22.429474 [info ] [MainThread]: dbt version: 1.7.3
+[0m18:33:22.429740 [info ] [MainThread]: python version: 3.11.6
+[0m18:33:22.429994 [info ] [MainThread]: python path: /Users/ambikagarg/.pyenv/versions/airflow_venv/bin/python
+[0m18:33:22.430221 [info ] [MainThread]: os info: macOS-14.1.2-arm64-arm-64bit
+[0m18:33:22.506808 [error] [MainThread]: Encountered an error:
+dlopen(/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/pyodbc.cpython-311-darwin.so, 0x0002): symbol not found in flat namespace '_SQLAllocHandle'
+[0m18:33:22.535950 [error] [MainThread]: Traceback (most recent call last):
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/cli/requires.py", line 90, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/cli/requires.py", line 75, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/cli/main.py", line 444, in debug
+    results = task.run()
+              ^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/task/debug.py", line 123, in run
+    load_profile_status: SubtaskStatus = self._load_profile()
+                                         ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/task/debug.py", line 212, in _load_profile
+    profile: Profile = Profile.render(
+                       ^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/config/profile.py", line 436, in render
+    return cls.from_raw_profiles(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/config/profile.py", line 401, in from_raw_profiles
+    return cls.from_raw_profile_info(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/config/profile.py", line 355, in from_raw_profile_info
+    credentials: Credentials = cls._credentials_from_profile(
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/config/profile.py", line 165, in _credentials_from_profile
+    cls = load_plugin(typename)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/adapters/factory.py", line 212, in load_plugin
+    return FACTORY.load_plugin(name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/adapters/factory.py", line 58, in load_plugin
+    mod: Any = import_module("." + name, "dbt.adapters")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.6_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/adapters/fabric/__init__.py", line 3, in <module>
+    from dbt.adapters.fabric.fabric_adapter import FabricAdapter
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/adapters/fabric/fabric_adapter.py", line 23, in <module>
+    from dbt.adapters.fabric.fabric_connection_manager import FabricConnectionManager
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/adapters/fabric/fabric_connection_manager.py", line 10, in <module>
+    import pyodbc
+ImportError: dlopen(/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/pyodbc.cpython-311-darwin.so, 0x0002): symbol not found in flat namespace '_SQLAllocHandle'
+
+[0m18:33:22.538754 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_wall_clock_time": 0.20681271, "process_user_time": 1.310148, "process_kernel_time": 0.212985, "process_mem_max_rss": "105136128", "command_success": false, "process_in_blocks": "0", "process_out_blocks": "0"}
+[0m18:33:22.539225 [debug] [MainThread]: Command `dbt debug` failed at 18:33:22.539127 after 0.21 seconds
+[0m18:33:22.539524 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109074b10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10909cc90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10905c210>]}
+[0m18:33:22.539818 [debug] [MainThread]: Flushing usage events
+[0m18:38:18.908388 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x112263910>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11229b010>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1122a3e90>]}
+
+
+============================== 18:38:18.912596 | ae321a17-4261-4649-b070-24bf85144686 ==============================
+[0m18:38:18.912596 [info ] [MainThread]: Running with dbt=1.7.3
+[0m18:38:18.913099 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'version_check': 'True', 'log_path': '/Users/ambikagarg/dbt-fabric-airflow/dbt/logs', 'profiles_dir': '/Users/ambikagarg/dbt-fabric-airflow/dbt', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'log_format': 'default', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'target_path': 'None', 'invocation_command': 'dbt debug', 'send_anonymous_usage_stats': 'True'}
+[0m18:38:18.913563 [info ] [MainThread]: dbt version: 1.7.3
+[0m18:38:18.913827 [info ] [MainThread]: python version: 3.11.6
+[0m18:38:18.914074 [info ] [MainThread]: python path: /Users/ambikagarg/.pyenv/versions/airflow_venv/bin/python
+[0m18:38:18.914326 [info ] [MainThread]: os info: macOS-14.1.2-arm64-arm-64bit
+[0m18:38:18.927752 [error] [MainThread]: Encountered an error:
+dlopen(/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/pyodbc.cpython-311-darwin.so, 0x0002): symbol not found in flat namespace '_SQLAllocHandle'
+[0m18:38:18.936439 [error] [MainThread]: Traceback (most recent call last):
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/cli/requires.py", line 90, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/cli/requires.py", line 75, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/cli/main.py", line 444, in debug
+    results = task.run()
+              ^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/task/debug.py", line 123, in run
+    load_profile_status: SubtaskStatus = self._load_profile()
+                                         ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/task/debug.py", line 212, in _load_profile
+    profile: Profile = Profile.render(
+                       ^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/config/profile.py", line 436, in render
+    return cls.from_raw_profiles(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/config/profile.py", line 401, in from_raw_profiles
+    return cls.from_raw_profile_info(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/config/profile.py", line 355, in from_raw_profile_info
+    credentials: Credentials = cls._credentials_from_profile(
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/config/profile.py", line 165, in _credentials_from_profile
+    cls = load_plugin(typename)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/adapters/factory.py", line 212, in load_plugin
+    return FACTORY.load_plugin(name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/adapters/factory.py", line 58, in load_plugin
+    mod: Any = import_module("." + name, "dbt.adapters")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.6_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/adapters/fabric/__init__.py", line 3, in <module>
+    from dbt.adapters.fabric.fabric_adapter import FabricAdapter
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/adapters/fabric/fabric_adapter.py", line 23, in <module>
+    from dbt.adapters.fabric.fabric_connection_manager import FabricConnectionManager
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/adapters/fabric/fabric_connection_manager.py", line 10, in <module>
+    import pyodbc
+ImportError: dlopen(/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/pyodbc.cpython-311-darwin.so, 0x0002): symbol not found in flat namespace '_SQLAllocHandle'
+
+[0m18:38:18.938899 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_wall_clock_time": 0.073459126, "process_user_time": 1.308112, "process_kernel_time": 0.251972, "process_mem_max_rss": "104333312", "command_success": false, "process_in_blocks": "0", "process_out_blocks": "0"}
+[0m18:38:18.939429 [debug] [MainThread]: Command `dbt debug` failed at 18:38:18.939305 after 0.07 seconds
+[0m18:38:18.939745 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x112289ad0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1122a3f90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104ad3510>]}
+[0m18:38:18.940046 [debug] [MainThread]: Flushing usage events
+[0m18:39:39.201116 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109839190>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10987be90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109890dd0>]}
+
+
+============================== 18:39:39.206103 | 1a80ab4e-2f81-40a3-8bd7-3d5c3d0f6ac4 ==============================
+[0m18:39:39.206103 [info ] [MainThread]: Running with dbt=1.7.3
+[0m18:39:39.206628 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'version_check': 'True', 'log_path': '/Users/ambikagarg/dbt-fabric-airflow/dbt/logs', 'profiles_dir': '/Users/ambikagarg/dbt-fabric-airflow/dbt', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'log_format': 'default', 'invocation_command': 'dbt debug', 'static_parser': 'True', 'introspect': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m18:39:39.207101 [info ] [MainThread]: dbt version: 1.7.3
+[0m18:39:39.207373 [info ] [MainThread]: python version: 3.11.6
+[0m18:39:39.207632 [info ] [MainThread]: python path: /Users/ambikagarg/.pyenv/versions/airflow_venv/bin/python
+[0m18:39:39.207857 [info ] [MainThread]: os info: macOS-14.1.2-arm64-arm-64bit
+[0m18:39:39.220740 [error] [MainThread]: Encountered an error:
+dlopen(/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/pyodbc.cpython-311-darwin.so, 0x0002): symbol not found in flat namespace '_SQLAllocHandle'
+[0m18:39:39.228443 [error] [MainThread]: Traceback (most recent call last):
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/cli/requires.py", line 90, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/cli/requires.py", line 75, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/cli/main.py", line 444, in debug
+    results = task.run()
+              ^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/task/debug.py", line 123, in run
+    load_profile_status: SubtaskStatus = self._load_profile()
+                                         ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/task/debug.py", line 212, in _load_profile
+    profile: Profile = Profile.render(
+                       ^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/config/profile.py", line 436, in render
+    return cls.from_raw_profiles(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/config/profile.py", line 401, in from_raw_profiles
+    return cls.from_raw_profile_info(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/config/profile.py", line 355, in from_raw_profile_info
+    credentials: Credentials = cls._credentials_from_profile(
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/config/profile.py", line 165, in _credentials_from_profile
+    cls = load_plugin(typename)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/adapters/factory.py", line 212, in load_plugin
+    return FACTORY.load_plugin(name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/adapters/factory.py", line 58, in load_plugin
+    mod: Any = import_module("." + name, "dbt.adapters")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.6_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/adapters/fabric/__init__.py", line 3, in <module>
+    from dbt.adapters.fabric.fabric_adapter import FabricAdapter
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/adapters/fabric/fabric_adapter.py", line 23, in <module>
+    from dbt.adapters.fabric.fabric_connection_manager import FabricConnectionManager
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/adapters/fabric/fabric_connection_manager.py", line 10, in <module>
+    import pyodbc
+ImportError: dlopen(/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/pyodbc.cpython-311-darwin.so, 0x0002): symbol not found in flat namespace '_SQLAllocHandle'
+
+[0m18:39:39.231056 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_wall_clock_time": 0.07277725, "process_user_time": 1.309011, "process_kernel_time": 0.247079, "process_mem_max_rss": "104038400", "command_success": false, "process_in_blocks": "0", "process_out_blocks": "0"}
+[0m18:39:39.231500 [debug] [MainThread]: Command `dbt debug` failed at 18:39:39.231400 after 0.07 seconds
+[0m18:39:39.231795 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104e1afd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109871e50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104eab450>]}
+[0m18:39:39.232078 [debug] [MainThread]: Flushing usage events
+[0m19:22:00.958837 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108c470d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108cabe90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108cc0d90>]}
+
+
+============================== 19:22:00.963141 | 9bfd42b6-a3b5-49b7-af0b-8a93976b5acf ==============================
+[0m19:22:00.963141 [info ] [MainThread]: Running with dbt=1.7.3
+[0m19:22:00.963623 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/Users/ambikagarg/dbt-fabric-airflow/dbt', 'fail_fast': 'False', 'version_check': 'True', 'log_path': '/Users/ambikagarg/dbt-fabric-airflow/dbt/logs', 'debug': 'False', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'log_format': 'default', 'invocation_command': 'dbt debug --config-dir', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m19:22:00.964092 [info ] [MainThread]: To view your profiles.yml file, run:
+
+open /Users/ambikagarg/dbt-fabric-airflow/dbt
+[0m19:22:00.966414 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": true, "command_wall_clock_time": 0.07456175, "process_user_time": 1.298811, "process_kernel_time": 0.240621, "process_mem_max_rss": "103989248", "process_in_blocks": "0", "process_out_blocks": "0"}
+[0m19:22:00.966939 [debug] [MainThread]: Command `dbt debug` succeeded at 19:22:00.966829 after 0.08 seconds
+[0m19:22:00.967269 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108c680d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1041f6550>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1042db550>]}
+[0m19:22:00.967596 [debug] [MainThread]: Flushing usage events
+[0m19:22:18.587361 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1072ff050>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1072c7190>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107307fd0>]}
+
+
+============================== 19:22:18.591085 | 6fc5a265-5e93-481e-ad9e-a3c2af7f9d67 ==============================
+[0m19:22:18.591085 [info ] [MainThread]: Running with dbt=1.7.3
+[0m19:22:18.591571 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/Users/ambikagarg/dbt-fabric-airflow/dbt', 'debug': 'False', 'fail_fast': 'False', 'log_path': '/Users/ambikagarg/dbt-fabric-airflow/dbt/logs', 'version_check': 'True', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt debug --config-dir', 'log_format': 'default', 'static_parser': 'True', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m19:22:18.592029 [info ] [MainThread]: To view your profiles.yml file, run:
+
+open /Users/ambikagarg/dbt-fabric-airflow/dbt
+[0m19:22:18.593596 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": true, "command_wall_clock_time": 0.061052125, "process_user_time": 1.294579, "process_kernel_time": 0.202167, "process_mem_max_rss": "103972864", "process_in_blocks": "0", "process_out_blocks": "0"}
+[0m19:22:18.594063 [debug] [MainThread]: Command `dbt debug` succeeded at 19:22:18.593961 after 0.06 seconds
+[0m19:22:18.594386 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1028a70d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1028a5cd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1052d8950>]}
+[0m19:22:18.594712 [debug] [MainThread]: Flushing usage events
+[0m19:22:23.752962 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10749b310>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1074b81d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1074b8890>]}
+
+
+============================== 19:22:23.756652 | 228e5666-7248-4a20-898e-ad7808b46836 ==============================
+[0m19:22:23.756652 [info ] [MainThread]: Running with dbt=1.7.3
+[0m19:22:23.757133 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'fail_fast': 'False', 'log_path': '/Users/ambikagarg/dbt-fabric-airflow/dbt/logs', 'profiles_dir': '/Users/ambikagarg/dbt-fabric-airflow/dbt', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'invocation_command': 'dbt debug', 'introspect': 'True', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m19:22:23.757602 [info ] [MainThread]: dbt version: 1.7.3
+[0m19:22:23.757867 [info ] [MainThread]: python version: 3.11.6
+[0m19:22:23.758111 [info ] [MainThread]: python path: /Users/ambikagarg/.pyenv/versions/airflow_venv/bin/python
+[0m19:22:23.758336 [info ] [MainThread]: os info: macOS-14.1.2-arm64-arm-64bit
+[0m19:22:23.854636 [debug] [MainThread]: Traceback (most recent call last):
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/adapters/factory.py", line 58, in load_plugin
+    mod: Any = import_module("." + name, "dbt.adapters")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.6_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/adapters/fabric/__init__.py", line 3, in <module>
+    from dbt.adapters.fabric.fabric_adapter import FabricAdapter
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/adapters/fabric/fabric_adapter.py", line 23, in <module>
+    from dbt.adapters.fabric.fabric_connection_manager import FabricConnectionManager
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/adapters/fabric/fabric_connection_manager.py", line 10, in <module>
+    import pyodbc
+ModuleNotFoundError: No module named 'pyodbc'
+
+[0m19:22:23.855143 [error] [MainThread]: Encountered an error:
+No module named 'pyodbc'
+[0m19:22:23.878963 [error] [MainThread]: Traceback (most recent call last):
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/cli/requires.py", line 90, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/cli/requires.py", line 75, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/cli/main.py", line 444, in debug
+    results = task.run()
+              ^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/task/debug.py", line 123, in run
+    load_profile_status: SubtaskStatus = self._load_profile()
+                                         ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/task/debug.py", line 212, in _load_profile
+    profile: Profile = Profile.render(
+                       ^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/config/profile.py", line 436, in render
+    return cls.from_raw_profiles(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/config/profile.py", line 401, in from_raw_profiles
+    return cls.from_raw_profile_info(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/config/profile.py", line 355, in from_raw_profile_info
+    credentials: Credentials = cls._credentials_from_profile(
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/config/profile.py", line 165, in _credentials_from_profile
+    cls = load_plugin(typename)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/adapters/factory.py", line 212, in load_plugin
+    return FACTORY.load_plugin(name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/adapters/factory.py", line 58, in load_plugin
+    mod: Any = import_module("." + name, "dbt.adapters")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.6_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/adapters/fabric/__init__.py", line 3, in <module>
+    from dbt.adapters.fabric.fabric_adapter import FabricAdapter
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/adapters/fabric/fabric_adapter.py", line 23, in <module>
+    from dbt.adapters.fabric.fabric_connection_manager import FabricConnectionManager
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/adapters/fabric/fabric_connection_manager.py", line 10, in <module>
+    import pyodbc
+ModuleNotFoundError: No module named 'pyodbc'
+
+[0m19:22:23.881539 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_wall_clock_time": 0.17279042, "process_user_time": 1.302275, "process_kernel_time": 0.203264, "process_mem_max_rss": "104824832", "command_success": false, "process_in_blocks": "0", "process_out_blocks": "0"}
+[0m19:22:23.882040 [debug] [MainThread]: Command `dbt debug` failed at 19:22:23.881932 after 0.17 seconds
+[0m19:22:23.882364 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1074a3a50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1074a3750>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x101036f90>]}
+[0m19:22:23.882690 [debug] [MainThread]: Flushing usage events
+[0m19:24:22.939813 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106c565d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106c63e90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106c78dd0>]}
+
+
+============================== 19:24:22.944210 | 92b7b640-2faf-4a6d-9a2e-1699ddd26e0f ==============================
+[0m19:24:22.944210 [info ] [MainThread]: Running with dbt=1.7.3
+[0m19:24:22.944733 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/Users/ambikagarg/dbt-fabric-airflow/dbt', 'version_check': 'True', 'warn_error': 'None', 'log_path': '/Users/ambikagarg/dbt-fabric-airflow/dbt/logs', 'debug': 'False', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'log_format': 'default', 'introspect': 'True', 'static_parser': 'True', 'invocation_command': 'dbt debug', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m19:24:22.945199 [info ] [MainThread]: dbt version: 1.7.3
+[0m19:24:22.945496 [info ] [MainThread]: python version: 3.11.6
+[0m19:24:22.945755 [info ] [MainThread]: python path: /Users/ambikagarg/.pyenv/versions/airflow_venv/bin/python
+[0m19:24:22.945986 [info ] [MainThread]: os info: macOS-14.1.2-arm64-arm-64bit
+[0m19:24:22.964627 [debug] [MainThread]: Traceback (most recent call last):
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/adapters/factory.py", line 58, in load_plugin
+    mod: Any = import_module("." + name, "dbt.adapters")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.6_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/adapters/fabric/__init__.py", line 3, in <module>
+    from dbt.adapters.fabric.fabric_adapter import FabricAdapter
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/adapters/fabric/fabric_adapter.py", line 23, in <module>
+    from dbt.adapters.fabric.fabric_connection_manager import FabricConnectionManager
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/adapters/fabric/fabric_connection_manager.py", line 10, in <module>
+    import pyodbc
+ModuleNotFoundError: No module named 'pyodbc'
+
+[0m19:24:22.965061 [error] [MainThread]: Encountered an error:
+No module named 'pyodbc'
+[0m19:24:22.969534 [error] [MainThread]: Traceback (most recent call last):
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/cli/requires.py", line 90, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/cli/requires.py", line 75, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/cli/main.py", line 444, in debug
+    results = task.run()
+              ^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/task/debug.py", line 123, in run
+    load_profile_status: SubtaskStatus = self._load_profile()
+                                         ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/task/debug.py", line 212, in _load_profile
+    profile: Profile = Profile.render(
+                       ^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/config/profile.py", line 436, in render
+    return cls.from_raw_profiles(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/config/profile.py", line 401, in from_raw_profiles
+    return cls.from_raw_profile_info(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/config/profile.py", line 355, in from_raw_profile_info
+    credentials: Credentials = cls._credentials_from_profile(
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/config/profile.py", line 165, in _credentials_from_profile
+    cls = load_plugin(typename)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/adapters/factory.py", line 212, in load_plugin
+    return FACTORY.load_plugin(name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/adapters/factory.py", line 58, in load_plugin
+    mod: Any = import_module("." + name, "dbt.adapters")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.6_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/adapters/fabric/__init__.py", line 3, in <module>
+    from dbt.adapters.fabric.fabric_adapter import FabricAdapter
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/adapters/fabric/fabric_adapter.py", line 23, in <module>
+    from dbt.adapters.fabric.fabric_connection_manager import FabricConnectionManager
+  File "/Users/ambikagarg/.pyenv/versions/airflow_venv/lib/python3.11/site-packages/dbt/adapters/fabric/fabric_connection_manager.py", line 10, in <module>
+    import pyodbc
+ModuleNotFoundError: No module named 'pyodbc'
+
+[0m19:24:22.972280 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_wall_clock_time": 0.077282414, "process_user_time": 1.311725, "process_kernel_time": 0.250108, "process_mem_max_rss": "104644608", "command_success": false, "process_in_blocks": "0", "process_out_blocks": "0"}
+[0m19:24:22.972771 [debug] [MainThread]: Command `dbt debug` failed at 19:24:22.972669 after 0.08 seconds
+[0m19:24:22.973066 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106674ad0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106c57e50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x102202f90>]}
+[0m19:24:22.973353 [debug] [MainThread]: Flushing usage events
+[0m19:26:06.736164 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10946f910>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1094d6750>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1094d6e50>]}
+
+
+============================== 19:26:06.740487 | 6990cd1c-625f-4a3c-b2a5-d413df07c484 ==============================
+[0m19:26:06.740487 [info ] [MainThread]: Running with dbt=1.7.3
+[0m19:26:06.740961 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/Users/ambikagarg/dbt-fabric-airflow/dbt', 'fail_fast': 'False', 'debug': 'False', 'log_path': '/Users/ambikagarg/dbt-fabric-airflow/dbt/logs', 'version_check': 'True', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'static_parser': 'True', 'invocation_command': 'dbt debug', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m19:26:06.741419 [info ] [MainThread]: dbt version: 1.7.3
+[0m19:26:06.741710 [info ] [MainThread]: python version: 3.11.6
+[0m19:26:06.741969 [info ] [MainThread]: python path: /Users/ambikagarg/dbt-fabric-airflow/myenv/bin/python3.11
+[0m19:26:06.742197 [info ] [MainThread]: os info: macOS-14.1.2-arm64-arm-64bit
+[0m19:26:06.812467 [error] [MainThread]: Encountered an error:
+dlopen(/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/pyodbc.cpython-311-darwin.so, 0x0002): symbol not found in flat namespace '_SQLAllocHandle'
+[0m19:26:06.821444 [error] [MainThread]: Traceback (most recent call last):
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/cli/requires.py", line 90, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/cli/requires.py", line 75, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/cli/main.py", line 444, in debug
+    results = task.run()
+              ^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/task/debug.py", line 123, in run
+    load_profile_status: SubtaskStatus = self._load_profile()
+                                         ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/task/debug.py", line 212, in _load_profile
+    profile: Profile = Profile.render(
+                       ^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/config/profile.py", line 436, in render
+    return cls.from_raw_profiles(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/config/profile.py", line 401, in from_raw_profiles
+    return cls.from_raw_profile_info(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/config/profile.py", line 355, in from_raw_profile_info
+    credentials: Credentials = cls._credentials_from_profile(
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/config/profile.py", line 165, in _credentials_from_profile
+    cls = load_plugin(typename)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/adapters/factory.py", line 212, in load_plugin
+    return FACTORY.load_plugin(name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/adapters/factory.py", line 58, in load_plugin
+    mod: Any = import_module("." + name, "dbt.adapters")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.6_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/adapters/fabric/__init__.py", line 3, in <module>
+    from dbt.adapters.fabric.fabric_adapter import FabricAdapter
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/adapters/fabric/fabric_adapter.py", line 23, in <module>
+    from dbt.adapters.fabric.fabric_connection_manager import FabricConnectionManager
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/adapters/fabric/fabric_connection_manager.py", line 10, in <module>
+    import pyodbc
+ImportError: dlopen(/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/pyodbc.cpython-311-darwin.so, 0x0002): symbol not found in flat namespace '_SQLAllocHandle'
+
+[0m19:26:06.823922 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_wall_clock_time": 0.13120204, "process_user_time": 1.298857, "process_kernel_time": 0.20888, "process_mem_max_rss": "103235584", "command_success": false, "process_in_blocks": "0", "process_out_blocks": "0"}
+[0m19:26:06.824399 [debug] [MainThread]: Command `dbt debug` failed at 19:26:06.824297 after 0.13 seconds
+[0m19:26:06.824698 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1080d0550>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1094d7050>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1094d6950>]}
+[0m19:26:06.824994 [debug] [MainThread]: Flushing usage events
+[0m19:26:25.054906 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107739590>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10773ae50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1077af050>]}
+
+
+============================== 19:26:25.059512 | f131881f-26e5-4a70-9bf4-3ecf8a5515bf ==============================
+[0m19:26:25.059512 [info ] [MainThread]: Running with dbt=1.7.3
+[0m19:26:25.060038 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'version_check': 'True', 'log_path': '/Users/ambikagarg/dbt-fabric-airflow/dbt/logs', 'fail_fast': 'False', 'profiles_dir': '/Users/ambikagarg/dbt-fabric-airflow/dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'introspect': 'True', 'log_format': 'default', 'target_path': 'None', 'invocation_command': 'dbt debug', 'send_anonymous_usage_stats': 'True'}
+[0m19:26:25.060512 [info ] [MainThread]: dbt version: 1.7.3
+[0m19:26:25.060779 [info ] [MainThread]: python version: 3.11.6
+[0m19:26:25.061028 [info ] [MainThread]: python path: /Users/ambikagarg/dbt-fabric-airflow/myenv/bin/python3.11
+[0m19:26:25.061269 [info ] [MainThread]: os info: macOS-14.1.2-arm64-arm-64bit
+[0m19:26:25.073720 [error] [MainThread]: Encountered an error:
+dlopen(/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/pyodbc.cpython-311-darwin.so, 0x0002): symbol not found in flat namespace '_SQLAllocHandle'
+[0m19:26:25.084335 [error] [MainThread]: Traceback (most recent call last):
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/cli/requires.py", line 90, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/cli/requires.py", line 75, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/cli/main.py", line 444, in debug
+    results = task.run()
+              ^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/task/debug.py", line 123, in run
+    load_profile_status: SubtaskStatus = self._load_profile()
+                                         ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/task/debug.py", line 212, in _load_profile
+    profile: Profile = Profile.render(
+                       ^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/config/profile.py", line 436, in render
+    return cls.from_raw_profiles(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/config/profile.py", line 401, in from_raw_profiles
+    return cls.from_raw_profile_info(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/config/profile.py", line 355, in from_raw_profile_info
+    credentials: Credentials = cls._credentials_from_profile(
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/config/profile.py", line 165, in _credentials_from_profile
+    cls = load_plugin(typename)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/adapters/factory.py", line 212, in load_plugin
+    return FACTORY.load_plugin(name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/adapters/factory.py", line 58, in load_plugin
+    mod: Any = import_module("." + name, "dbt.adapters")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.6_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/adapters/fabric/__init__.py", line 3, in <module>
+    from dbt.adapters.fabric.fabric_adapter import FabricAdapter
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/adapters/fabric/fabric_adapter.py", line 23, in <module>
+    from dbt.adapters.fabric.fabric_connection_manager import FabricConnectionManager
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/adapters/fabric/fabric_connection_manager.py", line 10, in <module>
+    import pyodbc
+ImportError: dlopen(/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/pyodbc.cpython-311-darwin.so, 0x0002): symbol not found in flat namespace '_SQLAllocHandle'
+
+[0m19:26:25.086713 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_wall_clock_time": 0.08281471, "process_user_time": 1.299861, "process_kernel_time": 0.198454, "process_mem_max_rss": "104398848", "command_success": false, "process_in_blocks": "0", "process_out_blocks": "0"}
+[0m19:26:25.087157 [debug] [MainThread]: Command `dbt debug` failed at 19:26:25.087061 after 0.08 seconds
+[0m19:26:25.087433 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1070be5d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1077ae5d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1077c6950>]}
+[0m19:26:25.087717 [debug] [MainThread]: Flushing usage events
+[0m19:27:28.542901 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109b801d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109bcead0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109bef1d0>]}
+
+
+============================== 19:27:28.547364 | 59719403-04c3-4fd6-baf7-18f67c3e8366 ==============================
+[0m19:27:28.547364 [info ] [MainThread]: Running with dbt=1.7.3
+[0m19:27:28.547863 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'fail_fast': 'False', 'log_path': '/Users/ambikagarg/dbt-fabric-airflow/dbt/logs', 'version_check': 'True', 'profiles_dir': '/Users/ambikagarg/dbt-fabric-airflow/dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'log_format': 'default', 'introspect': 'True', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'invocation_command': 'dbt debug', 'send_anonymous_usage_stats': 'True'}
+[0m19:27:28.548359 [info ] [MainThread]: dbt version: 1.7.3
+[0m19:27:28.548628 [info ] [MainThread]: python version: 3.11.6
+[0m19:27:28.548882 [info ] [MainThread]: python path: /Users/ambikagarg/dbt-fabric-airflow/myenv/bin/python3.11
+[0m19:27:28.549112 [info ] [MainThread]: os info: macOS-14.1.2-arm64-arm-64bit
+[0m19:27:28.562447 [error] [MainThread]: Encountered an error:
+dlopen(/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/pyodbc.cpython-311-darwin.so, 0x0002): symbol not found in flat namespace '_SQLAllocHandle'
+[0m19:27:28.571190 [error] [MainThread]: Traceback (most recent call last):
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/cli/requires.py", line 90, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/cli/requires.py", line 75, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/cli/main.py", line 444, in debug
+    results = task.run()
+              ^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/task/debug.py", line 123, in run
+    load_profile_status: SubtaskStatus = self._load_profile()
+                                         ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/task/debug.py", line 212, in _load_profile
+    profile: Profile = Profile.render(
+                       ^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/config/profile.py", line 436, in render
+    return cls.from_raw_profiles(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/config/profile.py", line 401, in from_raw_profiles
+    return cls.from_raw_profile_info(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/config/profile.py", line 355, in from_raw_profile_info
+    credentials: Credentials = cls._credentials_from_profile(
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/config/profile.py", line 165, in _credentials_from_profile
+    cls = load_plugin(typename)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/adapters/factory.py", line 212, in load_plugin
+    return FACTORY.load_plugin(name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/adapters/factory.py", line 58, in load_plugin
+    mod: Any = import_module("." + name, "dbt.adapters")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.6_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/adapters/fabric/__init__.py", line 3, in <module>
+    from dbt.adapters.fabric.fabric_adapter import FabricAdapter
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/adapters/fabric/fabric_adapter.py", line 23, in <module>
+    from dbt.adapters.fabric.fabric_connection_manager import FabricConnectionManager
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/adapters/fabric/fabric_connection_manager.py", line 10, in <module>
+    import pyodbc
+ImportError: dlopen(/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/pyodbc.cpython-311-darwin.so, 0x0002): symbol not found in flat namespace '_SQLAllocHandle'
+
+[0m19:27:28.573933 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_wall_clock_time": 0.092126295, "process_user_time": 1.304766, "process_kernel_time": 0.229756, "process_mem_max_rss": "105185280", "command_success": false, "process_in_blocks": "0", "process_out_blocks": "0"}
+[0m19:27:28.574402 [debug] [MainThread]: Command `dbt debug` failed at 19:27:28.574300 after 0.09 seconds
+[0m19:27:28.574704 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x105170f90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109bcf210>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x105215390>]}
+[0m19:27:28.574998 [debug] [MainThread]: Flushing usage events
+[0m19:29:50.529507 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107a25cd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107a725d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107a930d0>]}
+
+
+============================== 19:29:50.534290 | 4b5d4034-cbeb-44e3-b651-a5fea94f7064 ==============================
+[0m19:29:50.534290 [info ] [MainThread]: Running with dbt=1.7.3
+[0m19:29:50.534798 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/Users/ambikagarg/dbt-fabric-airflow/dbt', 'version_check': 'True', 'debug': 'False', 'log_path': '/Users/ambikagarg/dbt-fabric-airflow/dbt/logs', 'warn_error': 'None', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'log_format': 'default', 'invocation_command': 'dbt debug', 'introspect': 'True', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m19:29:50.535245 [info ] [MainThread]: dbt version: 1.7.3
+[0m19:29:50.535511 [info ] [MainThread]: python version: 3.11.6
+[0m19:29:50.535763 [info ] [MainThread]: python path: /Users/ambikagarg/dbt-fabric-airflow/myenv/bin/python3.11
+[0m19:29:50.535994 [info ] [MainThread]: os info: macOS-14.1.2-arm64-arm-64bit
+[0m19:29:50.648826 [error] [MainThread]: Encountered an error:
+dlopen(/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/pyodbc.cpython-311-darwin.so, 0x0002): symbol not found in flat namespace '_SQLAllocHandle'
+[0m19:29:50.657182 [error] [MainThread]: Traceback (most recent call last):
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/cli/requires.py", line 90, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/cli/requires.py", line 75, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/cli/main.py", line 444, in debug
+    results = task.run()
+              ^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/task/debug.py", line 123, in run
+    load_profile_status: SubtaskStatus = self._load_profile()
+                                         ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/task/debug.py", line 212, in _load_profile
+    profile: Profile = Profile.render(
+                       ^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/config/profile.py", line 436, in render
+    return cls.from_raw_profiles(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/config/profile.py", line 401, in from_raw_profiles
+    return cls.from_raw_profile_info(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/config/profile.py", line 355, in from_raw_profile_info
+    credentials: Credentials = cls._credentials_from_profile(
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/config/profile.py", line 165, in _credentials_from_profile
+    cls = load_plugin(typename)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/adapters/factory.py", line 212, in load_plugin
+    return FACTORY.load_plugin(name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/adapters/factory.py", line 58, in load_plugin
+    mod: Any = import_module("." + name, "dbt.adapters")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.6_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/adapters/fabric/__init__.py", line 3, in <module>
+    from dbt.adapters.fabric.fabric_adapter import FabricAdapter
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/adapters/fabric/fabric_adapter.py", line 23, in <module>
+    from dbt.adapters.fabric.fabric_connection_manager import FabricConnectionManager
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/adapters/fabric/fabric_connection_manager.py", line 10, in <module>
+    import pyodbc
+ImportError: dlopen(/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/pyodbc.cpython-311-darwin.so, 0x0002): symbol not found in flat namespace '_SQLAllocHandle'
+
+[0m19:29:50.659482 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_wall_clock_time": 0.17483154, "process_user_time": 1.309188, "process_kernel_time": 0.214422, "process_mem_max_rss": "104939520", "command_success": false, "process_in_blocks": "0", "process_out_blocks": "0"}
+[0m19:29:50.660007 [debug] [MainThread]: Command `dbt debug` failed at 19:29:50.659903 after 0.18 seconds
+[0m19:29:50.660327 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10629b850>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107a1cf50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107a92910>]}
+[0m19:29:50.660652 [debug] [MainThread]: Flushing usage events
+[0m19:51:06.933219 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x105895710>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1058cf490>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1042f4bd0>]}
+
+
+============================== 19:51:06.937414 | 7189575c-08d1-4a69-a706-2a819c55409c ==============================
+[0m19:51:06.937414 [info ] [MainThread]: Running with dbt=1.7.3
+[0m19:51:06.937904 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/Users/ambikagarg/dbt-fabric-airflow/dbt', 'debug': 'False', 'fail_fast': 'False', 'log_path': '/Users/ambikagarg/dbt-fabric-airflow/dbt/logs', 'version_check': 'True', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'invocation_command': 'dbt debug', 'log_format': 'default', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m19:51:06.938367 [info ] [MainThread]: dbt version: 1.7.3
+[0m19:51:06.938639 [info ] [MainThread]: python version: 3.11.6
+[0m19:51:06.938903 [info ] [MainThread]: python path: /Users/ambikagarg/dbt-fabric-airflow/myenv/bin/python3.11
+[0m19:51:06.939138 [info ] [MainThread]: os info: macOS-14.1.2-arm64-arm-64bit
+[0m19:51:06.952209 [error] [MainThread]: Encountered an error:
+dlopen(/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/pyodbc.cpython-311-darwin.so, 0x0002): symbol not found in flat namespace '_SQLAllocHandle'
+[0m19:51:06.961647 [error] [MainThread]: Traceback (most recent call last):
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/cli/requires.py", line 90, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/cli/requires.py", line 75, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/cli/main.py", line 444, in debug
+    results = task.run()
+              ^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/task/debug.py", line 123, in run
+    load_profile_status: SubtaskStatus = self._load_profile()
+                                         ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/task/debug.py", line 212, in _load_profile
+    profile: Profile = Profile.render(
+                       ^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/config/profile.py", line 436, in render
+    return cls.from_raw_profiles(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/config/profile.py", line 401, in from_raw_profiles
+    return cls.from_raw_profile_info(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/config/profile.py", line 355, in from_raw_profile_info
+    credentials: Credentials = cls._credentials_from_profile(
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/config/profile.py", line 165, in _credentials_from_profile
+    cls = load_plugin(typename)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/adapters/factory.py", line 212, in load_plugin
+    return FACTORY.load_plugin(name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/adapters/factory.py", line 58, in load_plugin
+    mod: Any = import_module("." + name, "dbt.adapters")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.6_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/adapters/fabric/__init__.py", line 3, in <module>
+    from dbt.adapters.fabric.fabric_adapter import FabricAdapter
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/adapters/fabric/fabric_adapter.py", line 23, in <module>
+    from dbt.adapters.fabric.fabric_connection_manager import FabricConnectionManager
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/adapters/fabric/fabric_connection_manager.py", line 10, in <module>
+    import pyodbc
+ImportError: dlopen(/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/pyodbc.cpython-311-darwin.so, 0x0002): symbol not found in flat namespace '_SQLAllocHandle'
+
+[0m19:51:06.963820 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_wall_clock_time": 0.071459, "process_user_time": 1.299359, "process_kernel_time": 0.211586, "process_mem_max_rss": "104480768", "command_success": false, "process_in_blocks": "0", "process_out_blocks": "0"}
+[0m19:51:06.964283 [debug] [MainThread]: Command `dbt debug` failed at 19:51:06.964183 after 0.07 seconds
+[0m19:51:06.964583 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x100e8d190>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1058e9a90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10590b050>]}
+[0m19:51:06.964877 [debug] [MainThread]: Flushing usage events
+[0m19:53:51.046233 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1116386d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1116ae250>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1116aed50>]}
+
+
+============================== 19:53:51.051256 | dc9f0cb0-429d-4496-812b-beae142e8ce5 ==============================
+[0m19:53:51.051256 [info ] [MainThread]: Running with dbt=1.7.3
+[0m19:53:51.051767 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/Users/ambikagarg/dbt-fabric-airflow/dbt', 'fail_fast': 'False', 'debug': 'False', 'log_path': '/Users/ambikagarg/dbt-fabric-airflow/dbt/logs', 'warn_error': 'None', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'introspect': 'True', 'invocation_command': 'dbt debug', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m19:53:51.052260 [info ] [MainThread]: dbt version: 1.7.3
+[0m19:53:51.052539 [info ] [MainThread]: python version: 3.11.6
+[0m19:53:51.052795 [info ] [MainThread]: python path: /Users/ambikagarg/dbt-fabric-airflow/myenv/bin/python3.11
+[0m19:53:51.053032 [info ] [MainThread]: os info: macOS-14.1.2-arm64-arm-64bit
+[0m19:53:51.284668 [error] [MainThread]: Encountered an error:
+dlopen(/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/pyodbc.cpython-311-darwin.so, 0x0002): symbol not found in flat namespace '_SQLAllocHandle'
+[0m19:53:51.296247 [error] [MainThread]: Traceback (most recent call last):
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/cli/requires.py", line 90, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/cli/requires.py", line 75, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/cli/main.py", line 444, in debug
+    results = task.run()
+              ^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/task/debug.py", line 123, in run
+    load_profile_status: SubtaskStatus = self._load_profile()
+                                         ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/task/debug.py", line 212, in _load_profile
+    profile: Profile = Profile.render(
+                       ^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/config/profile.py", line 436, in render
+    return cls.from_raw_profiles(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/config/profile.py", line 401, in from_raw_profiles
+    return cls.from_raw_profile_info(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/config/profile.py", line 355, in from_raw_profile_info
+    credentials: Credentials = cls._credentials_from_profile(
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/config/profile.py", line 165, in _credentials_from_profile
+    cls = load_plugin(typename)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/adapters/factory.py", line 212, in load_plugin
+    return FACTORY.load_plugin(name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/adapters/factory.py", line 58, in load_plugin
+    mod: Any = import_module("." + name, "dbt.adapters")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.6_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/adapters/fabric/__init__.py", line 3, in <module>
+    from dbt.adapters.fabric.fabric_adapter import FabricAdapter
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/adapters/fabric/fabric_adapter.py", line 23, in <module>
+    from dbt.adapters.fabric.fabric_connection_manager import FabricConnectionManager
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/adapters/fabric/fabric_connection_manager.py", line 10, in <module>
+    import pyodbc
+ImportError: dlopen(/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/pyodbc.cpython-311-darwin.so, 0x0002): symbol not found in flat namespace '_SQLAllocHandle'
+
+[0m19:53:51.300624 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_wall_clock_time": 0.29750672, "process_user_time": 1.302613, "process_kernel_time": 0.219846, "process_mem_max_rss": "105398272", "command_success": false, "process_in_blocks": "0", "process_out_blocks": "0"}
+[0m19:53:51.301755 [debug] [MainThread]: Command `dbt debug` failed at 19:53:51.301438 after 0.30 seconds
+[0m19:53:51.302642 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1116ae610>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10453bb50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1116c7cd0>]}
+[0m19:53:51.303376 [debug] [MainThread]: Flushing usage events
+[0m19:56:40.888665 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10924c9d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1092a2ad0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1092c3050>]}
+
+
+============================== 19:56:40.893062 | 099a62ac-73de-4b45-9024-a773d0149f88 ==============================
+[0m19:56:40.893062 [info ] [MainThread]: Running with dbt=1.7.3
+[0m19:56:40.893577 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/Users/ambikagarg/dbt-fabric-airflow/dbt', 'version_check': 'True', 'debug': 'False', 'log_path': '/Users/ambikagarg/dbt-fabric-airflow/dbt/logs', 'fail_fast': 'False', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'log_format': 'default', 'introspect': 'True', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'invocation_command': 'dbt debug', 'send_anonymous_usage_stats': 'True'}
+[0m19:56:40.894069 [info ] [MainThread]: dbt version: 1.7.3
+[0m19:56:40.894351 [info ] [MainThread]: python version: 3.11.6
+[0m19:56:40.894613 [info ] [MainThread]: python path: /Users/ambikagarg/dbt-fabric-airflow/myenv/bin/python3.11
+[0m19:56:40.894852 [info ] [MainThread]: os info: macOS-14.1.2-arm64-arm-64bit
+[0m19:56:40.907069 [error] [MainThread]: Encountered an error:
+dlopen(/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/pyodbc.cpython-311-darwin.so, 0x0002): symbol not found in flat namespace '_SQLAllocHandle'
+[0m19:56:40.916695 [error] [MainThread]: Traceback (most recent call last):
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/cli/requires.py", line 90, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/cli/requires.py", line 75, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/cli/main.py", line 444, in debug
+    results = task.run()
+              ^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/task/debug.py", line 123, in run
+    load_profile_status: SubtaskStatus = self._load_profile()
+                                         ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/task/debug.py", line 212, in _load_profile
+    profile: Profile = Profile.render(
+                       ^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/config/profile.py", line 436, in render
+    return cls.from_raw_profiles(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/config/profile.py", line 401, in from_raw_profiles
+    return cls.from_raw_profile_info(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/config/profile.py", line 355, in from_raw_profile_info
+    credentials: Credentials = cls._credentials_from_profile(
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/config/profile.py", line 165, in _credentials_from_profile
+    cls = load_plugin(typename)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/adapters/factory.py", line 212, in load_plugin
+    return FACTORY.load_plugin(name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/adapters/factory.py", line 58, in load_plugin
+    mod: Any = import_module("." + name, "dbt.adapters")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.6_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/adapters/fabric/__init__.py", line 3, in <module>
+    from dbt.adapters.fabric.fabric_adapter import FabricAdapter
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/adapters/fabric/fabric_adapter.py", line 23, in <module>
+    from dbt.adapters.fabric.fabric_connection_manager import FabricConnectionManager
+  File "/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/dbt/adapters/fabric/fabric_connection_manager.py", line 10, in <module>
+    import pyodbc
+ImportError: dlopen(/Users/ambikagarg/dbt-fabric-airflow/myenv/lib/python3.11/site-packages/pyodbc.cpython-311-darwin.so, 0x0002): symbol not found in flat namespace '_SQLAllocHandle'
+
+[0m19:56:40.918851 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_wall_clock_time": 0.071383044, "process_user_time": 1.293909, "process_kernel_time": 0.209485, "process_mem_max_rss": "105005056", "command_success": false, "process_in_blocks": "0", "process_out_blocks": "0"}
+[0m19:56:40.919316 [debug] [MainThread]: Command `dbt debug` failed at 19:56:40.919215 after 0.07 seconds
+[0m19:56:40.919627 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1092c2c90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1092c2410>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10929f850>]}
+[0m19:56:40.919925 [debug] [MainThread]: Flushing usage events

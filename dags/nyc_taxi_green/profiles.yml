@@ -1,0 +1,17 @@
+config:
+  partial_parse: true
+nyc_taxi_green:
+  target: fabric-dev
+  outputs:
+    fabric-dev:
+      type: fabric
+      driver: "ODBC Driver 18 for SQL Server"
+      server: x6eps4xrq2xudenlfv6naeo3i4-zoi3phe3mzye3boqle73jov654.dxt-datawarehouse.fabric.microsoft.com
+      port: 1433
+      database: "contoso-data-warehouse"
+      schema: dbo
+      threads: 4
+      authentication: ServicePrincipal
+      tenant_id: 72f988bf-86f1-41af-91ab-2d7cd011db47
+      client_id: 7118199e-ba73-4162-b807-b4e712af30bc
+      client_secret: $ClientSecret
